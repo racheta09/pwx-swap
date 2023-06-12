@@ -5,10 +5,10 @@ import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata = {
-  title: "Pocket Wallet Swap",
-  description: "Swap your PWX Tokens",
-}
+// export const metadata = {
+//   title: "Pocket Wallet Swap",
+//   description: "Swap your PWX Tokens",
+// }
 
 export default function RootLayout({
   children,
