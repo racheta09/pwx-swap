@@ -18,7 +18,7 @@ export default function RootLayout({
   const activeChainId = ChainId.BinanceSmartChainMainnet
 
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark">
       <head>
         <title>Pocket Wallet Swap</title>
       </head>
