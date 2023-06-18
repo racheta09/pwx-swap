@@ -1,6 +1,11 @@
 "use client"
 import Image from "next/image"
-import { useContractRead, useContract, useAddress } from "@thirdweb-dev/react"
+import {
+  useContractRead,
+  useContract,
+  useAddress,
+  ConnectWallet,
+} from "@thirdweb-dev/react"
 
 import Auth from "@/components/auth"
 import AdminSection from "@/components/adminSection"
@@ -17,39 +22,39 @@ export default function Home() {
 
   return (
     <>
-    <div className="navbar bg-base-300">
-      <a className="btn btn-ghost normal-case text-xl">PWX Swap</a>
+      <div className="navbar bg-base-300">
+        <div className="navbar-start">
+          <a className="btn btn-ghost normal-case text-xl">PWX Swap</a>
+        </div>
+        <div className="navbar-end">
+          <ConnectWallet />
+        </div>
       </div>
       <Auth>
-      <main className="flex flex-col m-2 p-2 align-middle justify-center items-center bg-[url(/bg2.jpg)] min-h-screen bg-cover bg-center">
-                <div className="bg-slate-700 m-4 p-8 rounded-xl bg-[url(/bg1.jpg)] bg-cover bg-center">
-                    <h1 className="text-4xl text-center m-2 p-2">
-                        Welcome to The PWX Swap
-                    </h1>
-                    <h4 className="text-xl text-center m-2 p-2">
-                        Current PWX Rate: ${rate && rate/10000000}
-                    </h4>
-                    {ended ? (
-                        <h2 className="text2xl text-center m-2 p-2">
-                            Swap Ended
-                        </h2>
-                    ) : (
-                        <Swap
-                            swapContractAddress={swapContractAddress}
-                            rate={rate}
-                        />
-                    )}
+        <main className="flex flex-col m-2 p-2 align-middle justify-center items-center bg-[url(/bg2.jpg)] min-h-screen bg-cover bg-center">
+          <div className="bg-slate-700 m-4 p-8 rounded-xl bg-[url(/bg1.jpg)] bg-cover bg-center">
+            <h1 className="text-4xl text-center m-2 p-2">
+              Welcome to The PWX Swap
+            </h1>
+            <h4 className="text-xl text-center m-2 p-2">
+              Current PWX Rate: ${rate && rate / 10000000}
+            </h4>
+            {ended ? (
+              <h2 className="text2xl text-center m-2 p-2">Swap Ended</h2>
+            ) : (
+              <Swap swapContractAddress={swapContractAddress} rate={rate} />
+            )}
 
-                    {owner && owner == address ? (
-                        <AdminSection
-                            swapContractAddress={swapContractAddress}
-                            usdtContractAddress={usdtAddress}
-                        />
-                    ) : (
-                        ""
-                    )}
-                </div>
-            </main>
+            {owner && owner == address ? (
+              <AdminSection
+                swapContractAddress={swapContractAddress}
+                usdtContractAddress={usdtAddress}
+              />
+            ) : (
+              ""
+            )}
+          </div>
+        </main>
       </Auth>
     </>
   )
