@@ -258,7 +258,8 @@ export default function Swap({ swapContractAddress, rate }: SwapProps) {
       <div className="flex flex-col justify-center">
         <p className="m-2 p-2">
           {`You will get ${millify(
-            (parseInt(amount) * parseInt(rate)) / 10000000
+            (parseInt(amount) * parseInt(rate)) / 10000000,
+            { precision: 2 }
           )} USDT `}
           Balance: {`${tokenBalance / 1e18} ${symbol}`}
           <br />
