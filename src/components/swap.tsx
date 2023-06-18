@@ -289,7 +289,7 @@ export default function Swap({ swapContractAddress, rate }: SwapProps) {
           <Web3Button
             contractAddress={swapContractAddress}
             action={async (contract) => {
-              const tx = await contract.call("swapToBUSD", [parseEther(amount)])
+              const tx = await contract.call("swapToUSDT", [parseEther(amount)])
               setTxhash(tx?.receipt?.transactionHash)
             }}
             theme="light"
